@@ -1,0 +1,28 @@
+# Ignore Autotools stuff
+autom4te.cache
+Makefile
+Makefile.in
+aclocal.m4
+config.log
+config.status
+configure
+install-sh
+missing
+config.guess
+config.h
+config.sub
+depcomp
+intltool-extract
+intltool-merge
+intltool-update
+libtool
+ltmain.sh
+mkinstalldirs
+stamp-h1
+# Ignore Makefile.in, config.h.in and so on
+*.in
+# Ignore generated translations
+po/*.gmo
+po/stamp-it
+.deps
+*.o
