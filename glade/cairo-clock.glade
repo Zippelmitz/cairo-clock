@@ -58,10 +58,10 @@
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
     <property name="name">MacSlow's Cairo-Clock</property>
     <property name="copyright" translatable="yes">(C) 2006 - 2007 Mirco "MacSlow" Müller</property>
-    <property name="comments" translatable="yes">an analog clock based on vector-graphics</property>
+    <property name="comments" translatable="yes">An analog clock based on vector-graphics</property>
     <property name="website">http://macslow.thepimp.net/cairo-clock</property>
-    <property name="website_label" translatable="yes">cairo-clock Homepage</property>
-    <property name="license" translatable="yes">GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+    <property name="website_label" translatable="yes">Cairo-Clock Homepage</property>
+    <property name="license" translatable="no">GNU GENERAL PUBLIC LICENSE Version 2, June 1991
 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.
 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -346,22 +346,18 @@ Milosz "deadchip" Derezynski &lt;internalerror@gmail.com&gt;
 
 Darryll "Moppsy" Truchan &lt;moppsy@comcast.net&gt;
 
-packagers:
+Packagers:
 many</property>
-    <property name="documenters">Mirco "MacSlow" Müller
-&lt;macslow@bangang.de&gt;</property>
+    <property name="documenters">Mirco "MacSlow" Müller &lt;macslow@bangang.de&gt;</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <property name="artists">icons, logo:
-Mirco "MacSlow" Müller
-&lt;macslow@bangang.de&gt;
+Mirco "MacSlow" Müller &lt;macslow@bangang.de&gt;
 
 default, fdo, funky, glassy, radium, simple, zen:
-Mirco "MacSlow" Müller
-&lt;macslow@bangang.de&gt;
+Mirco "MacSlow" Müller &lt;macslow@bangang.de&gt;
 
 antique:
-Timo Sakari Mikkolainen
-&lt;tmikkola@gmail.com&gt;
+Timo Sakari Mikkolainen &lt;tmikkola@gmail.com&gt;
 
 tango:
 Jannol &lt;jp@jannol.com&gt;
@@ -412,10 +408,10 @@ Christian "ChipX86" Hammond &lt;chipx86@chipx86.com&gt;</property>
                     <child>
                       <widget class="GtkComboBox" id="comboboxStartupSize">
                         <property name="visible">True</property>
-                        <property name="items" translatable="yes">small (50x50)
-medium (100x100)
-large (200x200)
-custom</property>
+                        <property name="items" translatable="yes">Small (50x50)
+Medium (100x100)
+Large (200x200)
+Custom</property>
                         <accelerator key="a" modifiers="" signal="grab_focus"/>
                       </widget>
                     </child>
@@ -458,7 +454,7 @@ custom</property>
                         <child>
                           <widget class="GtkSpinButton" id="spinbuttonHeight">
                             <property name="visible">True</property>
-                            <property name="tooltip" translatable="yes">initial window-height when program starts</property>
+                            <property name="tooltip" translatable="yes">Initial window-height when program starts</property>
                             <property name="adjustment">127 32 1023 1 10 10</property>
                             <property name="climb_rate">1</property>
                             <accelerator key="e" modifiers="" signal="grab_focus"/>
@@ -475,7 +471,7 @@ custom</property>
                         <child>
                           <widget class="GtkSpinButton" id="spinbuttonWidth">
                             <property name="visible">True</property>
-                            <property name="tooltip" translatable="yes">initial window-width when program starts</property>
+                            <property name="tooltip" translatable="yes">Initial window-width when program starts</property>
                             <property name="adjustment">127 32 1023 1 10 10</property>
                             <property name="climb_rate">1</property>
                             <accelerator key="w" modifiers="" signal="grab_focus"/>
@@ -500,8 +496,7 @@ custom</property>
               <widget class="GtkLabel" id="labelStartupSize">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">&lt;b&gt;St_artup Size&lt;/b&gt;</property>
-                <property name="use_markup">True</property>
-                <property name="use_underline">True</property>
+                <property name="use_markup">True</property>                <property name="use_underline">True</property>
               </widget>
               <packing>
                 <property name="type">label_item</property>
@@ -561,7 +556,7 @@ custom</property>
                     <child>
                       <widget class="GtkCheckButton" id="checkbuttonSeconds">
                         <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">if enabled, the seconds hand will be drawn</property>
+                        <property name="tooltip" translatable="yes">If enabled, the seconds hand will be drawn</property>
                         <property name="label" translatable="yes">Show _seconds</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
@@ -575,7 +570,7 @@ custom</property>
                     <child>
                       <widget class="GtkCheckButton" id="checkbuttonDate">
                         <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">if enabled, the current date will be displayed inside the clocks face</property>
+                        <property name="tooltip" translatable="yes">If enabled, the current date will be displayed inside the clocks face</property>
                         <property name="label" translatable="yes">Show _date</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
@@ -591,7 +586,7 @@ custom</property>
                       <widget class="GtkCheckButton" id="checkbuttonKeepOnTop">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip" translatable="yes">if enabled, the clock window will be kept above all other windows</property>
+                        <property name="tooltip" translatable="yes">If enabled, the clock window will be kept above all other windows</property>
                         <property name="label" translatable="yes">Keep _on top</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
@@ -607,7 +602,7 @@ custom</property>
                       <widget class="GtkCheckButton" id="checkbuttonAppearInPager">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip" translatable="yes">if enabled the workspace pager will show the window of the clock</property>
+                        <property name="tooltip" translatable="yes">If enabled the workspace pager will show the window of the clock</property>
                         <property name="label" translatable="yes">Appear in _pager</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
@@ -623,7 +618,7 @@ custom</property>
                       <widget class="GtkCheckButton" id="checkbuttonAppearInTaskbar">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip" translatable="yes">if enabled, the window of the clock will be shown in the taskbar</property>
+                        <property name="tooltip" translatable="yes">If enabled, the window of the clock will be shown in the taskbar</property>
                         <property name="label" translatable="yes">Appear in task_bar</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
@@ -701,7 +696,7 @@ custom</property>
                     <child>
                       <widget class="GtkLabel" id="labelRough">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">rough</property>
+                        <property name="label" translatable="yes">Rough</property>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
@@ -724,7 +719,7 @@ custom</property>
                     <child>
                       <widget class="GtkLabel" id="labelSmooth">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">smooth</property>
+                        <property name="label" translatable="yes">Smooth</property>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
@@ -759,7 +754,7 @@ custom</property>
               <widget class="GtkButton" id="buttonHelp">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
-                <property name="tooltip" translatable="yes">get information on all settings-options</property>
+                <property name="tooltip" translatable="yes">Get information on all settings-options</property>
                 <property name="label">gtk-help</property>
                 <property name="use_stock">True</property>
                 <accelerator key="h" modifiers="" signal="clicked"/>
@@ -772,7 +767,7 @@ custom</property>
                 <property name="has_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="has_default">True</property>
-                <property name="tooltip" translatable="yes">close this settings-dialog</property>
+                <property name="tooltip" translatable="yes">Close this settings-dialog</property>
                 <property name="label">gtk-close</property>
                 <property name="use_stock">True</property>
                 <accelerator key="c" modifiers="" signal="clicked"/>
