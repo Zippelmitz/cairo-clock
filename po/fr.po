@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: cairo-clock\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-28 18:46+0100\n"
-"PO-Revision-Date: 2008-02-15 17:11+0100\n"
+"PO-Revision-Date: 2008-02-28 23:00+0100\n"
 "Last-Translator: Stéphane Raimbault <stephane.raimbault@gmail.com>\n"
 "Language-Team: GNOME French team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr "<b>_Thème</b>"
 msgid "An analog clock based on vector-graphics"
 msgstr "Une horloge analogique en graphiques vectoriels"
 
-# Manque de place pour utiliser « sélecteur d'espaces de travail »
+# Manque de place pour utiliser « sélecteur d'espace de travail »
 #: ../glade/cairo-clock.glade.h:7
 msgid "Appear in _pager"
 msgstr "Afficher dans le _sélecteur"
@@ -236,7 +236,7 @@ msgstr "La fenêtre reste au-dessus des autres fenêtres"
 
 #: ../src/cairo-clock.c:1349
 msgid "Clock-window shows up in pager"
-msgstr "L'horloge s'affiche dans le sélecteur d'espaces de travail"
+msgstr "L'horloge s'affiche dans le sélecteur d'espace de travail"
 
 #: ../src/cairo-clock.c:1356
 msgid "Clock-window shows up in taskbar"
