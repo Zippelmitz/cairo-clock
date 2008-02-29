@@ -704,23 +704,33 @@ static void
 on_value_changed (GtkRange* pRange,
 		  gpointer  data)
 {
-	g_iRefreshRate = (gint) gtk_range_get_value (pRange);
-	g_source_remove (g_iuIntervalHandlerId);
-	g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
-					       (GSourceFunc) time_handler,
-					       (gpointer) g_pMainWindow);
+        if (g_iShowSeconds == 1) {
+                // The refresh rate is used to draw the second hand
+                g_iRefreshRate = (gint) gtk_range_get_value (pRange);
+                g_source_remove (g_iuIntervalHandlerId);
+                g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
+                                                       (GSourceFunc) time_handler,
+                                                       (gpointer) g_pMainWindow);
+        }
 }
 
 static void
 on_seconds_toggled (GtkToggleButton* pTogglebutton,
 		    gpointer	     window)
 {
-	if (gtk_toggle_button_get_active (pTogglebutton))
+	if (gtk_toggle_button_get_active (pTogglebutton)) {
 		g_iShowSeconds = 1;
-	else
+        } else {
 		g_iShowSeconds = 0;
+                // It's useless to update the clock too often if the
+                // second hand is not drawn (1 Hz)
+                g_iRefreshRate = 1;
+        }
 
-	gtk_widget_queue_draw (GTK_WIDGET (window));
+        g_source_remove (g_iuIntervalHandlerId);
+        g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
+                                               (GSourceFunc) time_handler,
+                                               (gpointer) g_pMainWindow);
 }
 
 static void
