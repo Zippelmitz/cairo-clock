@@ -701,16 +701,34 @@ on_width_value_changed (GtkSpinButton* pSpinButton,
 }
 
 static void
+common_timeout_add (void)
+{
+        if (g_iuIntervalHandlerId > 0)
+                g_source_remove (g_iuIntervalHandlerId);
+
+         if (!g_iShowSeconds || (g_iRefreshRate == 1)) {
+                 g_iRefreshRate = 1;
+                 // It's useless to update the clock too often if the
+                 // second hand is not drawn (1 Hz)   
+                 g_iuIntervalHandlerId = g_timeout_add_seconds (g_iRefreshRate,
+                                                                (GSourceFunc) time_handler,
+                                                                (gpointer) g_pMainWindow);
+         } else {
+                 g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
+                                                        (GSourceFunc) time_handler,
+                                                        (gpointer) g_pMainWindow);
+         }
+
+}
+
+static void
 on_value_changed (GtkRange* pRange,
 		  gpointer  data)
 {
         if (g_iShowSeconds == 1) {
                 // The refresh rate is used to draw the second hand
                 g_iRefreshRate = (gint) gtk_range_get_value (pRange);
-                g_source_remove (g_iuIntervalHandlerId);
-                g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
-                                                       (GSourceFunc) time_handler,
-                                                       (gpointer) g_pMainWindow);
+                common_timeout_add();
         }
 }
 
@@ -718,22 +736,14 @@ static void
 on_seconds_toggled (GtkToggleButton* pTogglebutton,
 		    gpointer	     window)
 {
-        g_source_remove (g_iuIntervalHandlerId);
-
 	if (gtk_toggle_button_get_active (pTogglebutton)) {
 		g_iShowSeconds = 1;
-                g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
-                                                       (GSourceFunc) time_handler,
-                                                       (gpointer) g_pMainWindow);
+                g_iRefreshRate = gtk_range_get_value (GTK_RANGE (g_pHScaleSmoothness));
         } else {
 		g_iShowSeconds = 0;
-                // It's useless to update the clock too often if the
-                // second hand is not drawn (1 Hz)
                 g_iRefreshRate = 1;
-                g_iuIntervalHandlerId = g_timeout_add_seconds (g_iRefreshRate,
-                                                               (GSourceFunc) time_handler,
-                                                               (gpointer) g_pMainWindow);
         }
+        common_timeout_add();
 }
 
 static void
@@ -1747,9 +1757,7 @@ main (int    argc,
 		gtk_widget_show_all (g_pMainWindow);
 	}
 
-	g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
-					       (GSourceFunc) time_handler,
-					       (gpointer) g_pMainWindow);
+        common_timeout_add();
 
 	g_pMainContext = gdk_cairo_create (g_pMainWindow->window);
 
@@ -1774,6 +1782,10 @@ main (int    argc,
 			     &g_iDefaultHeight);
 
 	pcFilename = get_preferences_filename ();
+
+        // Read value from the widget to not use 1 Hz setting
+        g_iRefreshRate = gtk_range_get_value (GTK_RANGE (g_pHScaleSmoothness));
+
 	if (!write_settings (pcFilename,
 			     g_iDefaultX,
 			     g_iDefaultY,
