@@ -718,19 +718,22 @@ static void
 on_seconds_toggled (GtkToggleButton* pTogglebutton,
 		    gpointer	     window)
 {
+        g_source_remove (g_iuIntervalHandlerId);
+
 	if (gtk_toggle_button_get_active (pTogglebutton)) {
 		g_iShowSeconds = 1;
+                g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
+                                                       (GSourceFunc) time_handler,
+                                                       (gpointer) g_pMainWindow);
         } else {
 		g_iShowSeconds = 0;
                 // It's useless to update the clock too often if the
                 // second hand is not drawn (1 Hz)
                 g_iRefreshRate = 1;
+                g_iuIntervalHandlerId = g_timeout_add_seconds (g_iRefreshRate,
+                                                               (GSourceFunc) time_handler,
+                                                               (gpointer) g_pMainWindow);
         }
-
-        g_source_remove (g_iuIntervalHandlerId);
-        g_iuIntervalHandlerId = g_timeout_add (1000 / g_iRefreshRate,
-                                               (GSourceFunc) time_handler,
-                                               (gpointer) g_pMainWindow);
 }
 
 static void
